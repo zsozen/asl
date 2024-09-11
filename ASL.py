@@ -187,13 +187,7 @@ import numpy as np
 random_indices = np.random.choice(range(len(y_combined_train)), size=16, replace=False)
 
 # Rastgele 16 görüntüyü görselleştirme ve etiketleri harf olarak gösterme
-plt.figure(figsize=(10, 10))
-for i, idx in enumerate(random_indices):
-    plt.subplot(4, 4, i+1)
-    plt.imshow(X_combined_train[idx].reshape(28, 28), cmap='gray')
-    plt.title(f'Label: {label_to_letter[y_combined_train[idx]]}')
-    plt.axis('off')
-plt.show()
+
 
 """#Adım 7: Hybrid Model-1 CNN + RF (Attention Layer)"""
 
