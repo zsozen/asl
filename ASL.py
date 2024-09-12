@@ -25,8 +25,6 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
-from google.colab import drive
-drive.mount('/content/drive')
 
 """#Adım 1: Sign Language MNIST Veri Seti"""
 
