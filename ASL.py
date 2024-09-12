@@ -441,16 +441,7 @@ avg_mse = np.mean(mse_scores)
 avg_rmse = np.mean(rmse_scores)
 avg_error_rate = np.mean(error_rates)
 
-print(f'Average Accuracy: {avg_accuracy}')
-print(f'Average F1 Score: {avg_f1}')
-print(f'Average Precision: {avg_precision}')
-print(f'Average Recall: {avg_recall}')
-print(f'Average MAE: {avg_mae}')
-print(f'Average MSE: {avg_mse}')
-print(f'Average RMSE: {avg_rmse}')
-print(f'Average Error Rate: {avg_error_rate}')
-
-"""altaki indirgenmemiş"""
+print(avg_accuracy)
 
 import tensorflow as tf
 import tensorflow_hub as hub
