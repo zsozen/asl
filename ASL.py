@@ -704,33 +704,3 @@ print(results_df)
 # Sonuçları CSV olarak kaydetme
 results_df.to_csv('model_results.csv', index=False)
 
-import ace_tools as tools; tools.display_dataframe_to_user(name="Model Results", dataframe=results_df)
-
-def print_results_table(results):
-    print("+--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+")
-    print("| Model              | Accuracy       | F1 Score       | Precision      | Recall         | MAE            | MSE            | RMSE           | Error Rate     |")
-    print("+--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+")
-    for result in results:
-        print("| {:<18} | {:<14} | {:<14} | {:<14} | {:<14} | {:<14} | {:<14} | {:<14} | {:<14} |".format(
-            result['model'],
-            f"{result['accuracy']:.4f}",
-            f"{result['f1']:.4f}",
-            f"{result['precision']:.4f}",
-            f"{result['recall']:.4f}",
-            f"{result['mae']:.4f}",
-            f"{result['mse']:.4f}",
-            f"{result['rmse']:.4f}",
-            f"{result['error_rate']:.4f}"
-        ))
-    print("+--------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+")
-
-# Tüm sonuçları bir listeye ekleme
-results = [
-    {"model": "CNN + RF", "accuracy": avg_accuracy_cnn_rf, "f1": avg_f1_cnn_rf, "precision": avg_precision_cnn_rf, "recall": avg_recall_cnn_rf, "mae": avg_mae_cnn_rf, "mse": avg_mse_cnn_rf, "rmse": avg_rmse_cnn_rf, "error_rate": avg_error_rate_cnn_rf},
-    {"model": "ViT + SVM", "accuracy": avg_accuracy_vit_svm, "f1": avg_f1_vit_svm, "precision": avg_precision_vit_svm, "recall": avg_recall_vit_svm, "mae": avg_mae_vit_svm, "mse": avg_mse_vit_svm, "rmse": avg_rmse_vit_svm, "error_rate": avg_error_rate_vit_svm},
-    {"model": "Voting Ensemble", "accuracy": accuracy_voting, "f1": f1_voting, "precision": precision_voting, "recall": recall_voting, "mae": mae_voting, "mse": mse_voting, "rmse": rmse_voting, "error_rate": error_rate_voting},
-    {"model": "Stacking Ensemble", "accuracy": accuracy_stacking, "f1": f1_stacking, "precision": precision_stacking, "recall": recall_stacking, "mae": mae_stacking, "mse": mse_stacking, "rmse": rmse_stacking, "error_rate": error_rate_stacking},
-    {"model": "Weighted Avg Ensemble", "accuracy": accuracy_weighted, "f1": f1_weighted, "precision": precision_weighted, "recall": recall_weighted, "mae": mae_weighted, "mse": mse_weighted, "rmse": rmse_weighted, "error_rate": error_rate_weighted}
-]
-
-print_results_table(results)
