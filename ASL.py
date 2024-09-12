@@ -558,14 +558,7 @@ rmse_ensemble = np.sqrt(mse_ensemble)
 error_rate_ensemble = 1 - accuracy_ensemble
 
 # Sonuçların Yazdırılması
-print(f"Ensemble Model Accuracy: {accuracy_ensemble}")
-print(f"F1 Score: {f1_ensemble}")
-print(f"Precision: {precision_ensemble}")
-print(f"Recall: {recall_ensemble}")
-print(f"Mean Absolute Error (MAE): {mae_ensemble}")
-print(f"Mean Squared Error (MSE): {mse_ensemble}")
-print(f"Root Mean Squared Error (RMSE): {rmse_ensemble}")
-print(f"Error Rate: {error_rate_ensemble}")
+print(accuracy_ensemble)
 
 """#Adım 11: Ensemble Learning - Stacking"""
 
