@@ -191,7 +191,7 @@ random_indices = np.random.choice(range(len(y_combined_train)), size=16, replace
 
 """#Adım 7: Hybrid Model-1 CNN + RF (Attention Layer)"""
 
-pip install keras-tuner
+
 
 from sklearn.model_selection import KFold
 from sklearn.ensemble import RandomForestClassifier
