@@ -336,11 +336,6 @@ best_model = tuner.get_best_models(num_models=1)[0]
 # En iyi hiperparametreleri alma
 best_hyperparameters = tuner.get_best_hyperparameters(num_trials=1)[0]
 
-print("En iyi hiperparametreler:")
-for param in best_hyperparameters.values.keys():
-    print(f"{param}: {best_hyperparameters.get(param)}")
-
-"""#Adım8: Hybrid Model 2 - ViT (Vision Transformer) + SVM"""
 
 import numpy as np
 
