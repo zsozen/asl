@@ -327,7 +327,7 @@ avg_mse = np.mean(mse_scores)
 avg_rmse = np.mean(rmse_scores)
 avg_error_rate = np.mean(error_rates)
 
-print({avg_accuracy)
+print(avg_accuracy)
 print(avg_f1)
 
 # En iyi modeli seçme
