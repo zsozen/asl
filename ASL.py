@@ -327,14 +327,8 @@ avg_mse = np.mean(mse_scores)
 avg_rmse = np.mean(rmse_scores)
 avg_error_rate = np.mean(error_rates)
 
-print(f'Average Accuracy: {avg_accuracy}')
-print(f'Average F1 Score: {avg_f1}')
-print(f'Average Precision: {avg_precision}')
-print(f'Average Recall: {avg_recall}')
-print(f'Average MAE: {avg_mae}')
-print(f'Average MSE: {avg_mse}')
-print(f'Average RMSE: {avg_rmse}')
-print(f'Average Error Rate: {avg_error_rate}')
+print({avg_accuracy)
+print(avg_f1)
 
 # En iyi modeli seçme
 best_model = tuner.get_best_models(num_models=1)[0]
