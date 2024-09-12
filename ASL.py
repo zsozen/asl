@@ -620,85 +620,8 @@ avg_mse_stacking = np.mean(mse_scores_stacking)
 avg_rmse_stacking = np.mean(rmse_scores_stacking)
 avg_error_rate_stacking = np.mean(error_rates_stacking)
 
-print(f'Stacking - Average Accuracy: {avg_accuracy_stacking}')
-print(f'Stacking - Average F1 Score: {avg_f1_stacking}')
-print(f'Stacking - Average Precision: {avg_precision_stacking}')
-print(f'Stacking - Average Recall: {avg_recall_stacking}')
-print(f'Stacking - Average MAE: {avg_mae_stacking}')
-print(f'Stacking - Average MSE: {avg_mse_stacking}')
-print(f'Stacking - Average RMSE: {avg_rmse_stacking}')
-print(f'Stacking - Average Error Rate: {avg_error_rate_stacking}')
+print(avg_accuracy_stacking)
 
-"""#Adım 11: Ensemble Learning - Ağırlıklı Ortalama"""
-
-from sklearn.model_selection import KFold
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, mean_absolute_error, mean_squared_error
-import numpy as np
-
-# Weighted Average Modeli eğitme ve değerlendirme
-kf = KFold(n_splits=5, shuffle=True, random_state=42)
-
-accuracy_scores_weighted = []
-f1_scores_weighted = []
-precision_scores_weighted = []
-recall_scores_weighted = []
-mae_scores_weighted = []
-mse_scores_weighted = []
-rmse_scores_weighted = []
-error_rates_weighted = []
-
-weights = [0.5, 0.5]  # Modellerin ağırlıkları
-
-for train_index, test_index in kf.split(X_combined_train):
-    X_train_fold, X_test_fold = X_combined_train[train_index], X_combined_train[test_index]
-    y_train_fold, y_test_fold = y_combined_train[train_index], y_combined_train[test_index]
-
-    # Modelleri eğitme
-    cnn_rf_model.fit(X_train_fold, y_train_fold)
-    vit_svm_model.fit(X_train_fold, y_train_fold)
-
-    y_pred_cnn_rf = cnn_rf_model.predict_proba(X_test_fold)
-    y_pred_vit_svm = vit_svm_model.predict_proba(X_test_fold)
-
-    y_pred_weighted = (weights[0] * y_pred_cnn_rf) + (weights[1] * y_pred_vit_svm)
-    y_pred_weighted = np.argmax(y_pred_weighted, axis=1)
-
-    accuracy_weighted = accuracy_score(y_test_fold, y_pred_weighted)
-    f1_weighted = f1_score(y_test_fold, y_pred_weighted, average='weighted')
-    precision_weighted = precision_score(y_test_fold, y_pred_weighted, average='weighted')
-    recall_weighted = recall_score(y_test_fold, y_pred_weighted, average='weighted')
-    mae_weighted = mean_absolute_error(y_test_fold, y_pred_weighted)
-    mse_weighted = mean_squared_error(y_test_fold, y_pred_weighted)
-    rmse_weighted = np.sqrt(mse_weighted)
-    error_rate_weighted = 1 - accuracy_weighted
-
-    accuracy_scores_weighted.append(accuracy_weighted)
-    f1_scores_weighted.append(f1_weighted)
-    precision_scores_weighted.append(precision_weighted)
-    recall_scores_weighted.append(recall_weighted)
-    mae_scores_weighted.append(mae_weighted)
-    mse_scores_weighted.append(mse_weighted)
-    rmse_scores_weighted.append(rmse_weighted)
-    error_rates_weighted.append(error_rate_weighted)
-
-# Sonuçların ortalamalarını hesaplama
-avg_accuracy_weighted = np.mean(accuracy_scores_weighted)
-avg_f1_weighted = np.mean(f1_scores_weighted)
-avg_precision_weighted = np.mean(precision_scores_weighted)
-avg_recall_weighted = np.mean(recall_scores_weighted)
-avg_mae_weighted = np.mean(mae_scores_weighted)
-avg_mse_weighted = np.mean(mse_scores_weighted)
-avg_rmse_weighted = np.mean(rmse_scores_weighted)
-avg_error_rate_weighted = np.mean(error_rates_weighted)
-
-print(f'Weighted - Average Accuracy: {avg_accuracy_weighted}')
-print(f'Weighted - Average F1 Score: {avg_f1_weighted}')
-print(f'Weighted - Average Precision: {avg_precision_weighted}')
-print(f'Weighted - Average Recall: {avg_recall_weighted}')
-print(f'Weighted - Average MAE: {avg_mae_weighted}')
-print(f'Weighted - Average MSE: {avg_mse_weighted}')
-print(f'Weighted - Average RMSE: {avg_rmse_weighted}')
-print(f'Weighted - Average Error Rate: {avg_error_rate_weighted}')
 
 """#Sonuçlar"""
 
